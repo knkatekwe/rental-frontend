@@ -1,0 +1,78 @@
+<div class="">
+  <!--/ Form Search Star /-->
+  <div class="box-collapse">
+    <div class="title-box-d">
+      <!-- <h3 class="title-d">Search Property</h3> -->
+    </div>
+    <!-- <span class="close-box-collapse right-boxed ion-ios-close"></span> -->
+    <div class="box-collapse-wrap form mt-4">
+      <form class="form-a">
+        <div class="row">
+          <div class="col-md-4 mb-2">
+            <div class="form-group">
+              <label for="Type">Description</label>
+              <input type="text" class="form-control form-control form-control-a" placeholder="Keyword">
+            </div>
+          </div>
+          <div class="col-md-2 mb-2">
+            <div class="form-group">
+              <label for="Type">Type</label>
+              <select class="form-control form-control form-control-a" id="Type">
+                <option>All Type</option>
+                <option>For Rent</option>
+                <option>For Sale</option>
+                <option>Open House</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2 mb-2">
+            <div class="form-group">
+              <label for="city">Location</label>
+              <select class="form-control form-control form-control-a" id="city">
+                <option>All City</option>
+                <option>Bulawayo</option>
+                <option>Chegutu</option>
+                <option>Cinhoyi</option>
+                <option>Harare</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <br>
+            <button style="margin-top: 9px;" type="submit" class="btn btnl-lg btn-success">Search</button>
+          </div>
+        </div>
+      </form>
+      <br>
+    </div>
+  </div>
+  <!--/ Form Search End /-->
+</div>
+
+<div class="album bg-light">
+  <div class="">
+
+    <div class="row">
+      <div *ngFor="let rental of rentals; let i = index" class="col-md-4">
+        <div class="card mb-4 box-shadow">
+          <img class="card-img-top" style="height: 200px;" [src]="rental.imageUrl" alt="Card image cap">
+          <div class="card-body">
+            <h3>{{rental.category}}&bull;<span>{{rental.status}}</span></h3>
+            <small class="card-text">{{rental.streetAddress}}</small> &bull;
+            <small>{{rental.suburb}}</small> &bull;
+            <small>{{rental.city}}</small> &bull;
+            <small>{{rental.province}}</small>
+            <hr>
+            <p class="card-text">{{rental.description}}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <a [routerLink]="['/properties']" *ngIf="isLoggedIn && (rental.user.id == currentUser.id)">View</a><a
+                *ngIf="isLoggedIn && !(rental.user.id == currentUser.id)" [routerLink]="['/property', rental.id, 'offer']">Offer</a>
+              <small class="text-muted"><strong>${{rental.price}}</strong> / month</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" [routerLink]="['/']">Rentals</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/main']" [routerLinkActive]="['active']">Home</a>
+      </li>
+      <li class="nav-item" *appShowAuthed="false">
+        <a class="nav-link" [routerLink]="['/login']" [routerLinkActive]="['active']">Login</a>
+      </li>
+      <li class="nav-item" *appShowAuthed="true">
+        <a class="nav-link" [routerLink]="['/profile']" [routerLinkActive]="['active']">Profile</a>
+      </li>
+      <li class="nav-item" *appShowAuthed="true">
+        <a class="nav-link" [routerLink]="['/properties']" [routerLinkActive]="['active']">Properties</a>
+      </li>
+      <li class="nav-item" *appShowAuthed="true">
+        <a class="nav-link" [routerLink]="['/my/offers']" [routerLinkActive]="['active']">My Offers</a>
+      </li>
+      <li class="nav-item" *appShowAuthed="true">
+        <a class="nav-link" [routerLink]="['/incoming/offers']" [routerLinkActive]="['active']">Incoming Offers</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/register']" *appShowAuthed="false"
+          [routerLinkActive]="['active']">Register</a>
+      </li>
+      <li class="nav-item" *appShowAuthed="true">
+        <a class="nav-link  btn btn-sm btn-danger" [routerLink]="['.']" [routerLinkActive]="['active']"
+          (click)="logout()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

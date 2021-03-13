@@ -1,0 +1,78 @@
+<div class="mt-4">
+
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>Add Property</h2>
+            <form [formGroup]="form" (ngSubmit)="save()">
+
+                <input type="hidden" formControlName="user" [ngModel]="currentUser">
+
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="">Description</label>
+                        <input type="text" class="form-control" placeholder="Description" formControlName="description">
+                    </div>
+                    <div class=" col form-group">
+                        <label for="">Category</label>
+                        <select class="form-control" placeholder="Category" formControlName="category"
+                            id="exampleFormControlSelect1">
+                            <option value="Flat">Flat</option>
+                            <option value="Full House">Full House</option>
+                            <option value="Cortage">Cortage</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="">Image Url</label>
+                        <input type="text" class="form-control" placeholder="Image Url" formControlName="imageUrl">
+                    </div>
+                    <!-- <div class="col form-group">
+                      <input type="text" class="form-control" placeholder="Category" formControlName="category">
+                    </div> -->
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="">Price</label>
+                        <input type="text" class="form-control" placeholder="Price" formControlName="price">
+                    </div>
+                    <div class=" col form-group">
+                        <label for="">Status</label>
+                        <select class="form-control" placeholder="Status" formControlName="status"
+                            id="exampleFormControlSelect1">
+                            <option value="Available">Available</option>
+                            <option value="Not_Available">Not_Available</option>
+                            <option value="Requested">Requested</option>
+                            <option value="Occupied">Occupied</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="">Street Address</label>
+                        <input type="text" class="form-control" placeholder="Street Address"
+                            formControlName="streetAddress">
+                    </div>
+                    <div class="col form-group">
+                        <label for="">Suburb</label>
+                        <input type="text" class="form-control" placeholder="Suburb" formControlName="suburb">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="">City</label>
+                        <input type="text" class="form-control" placeholder="City" formControlName="city">
+                    </div>
+                    <div class="col form-group">
+                        <label for="">Province</label>
+                        <input type="text" class="form-control" placeholder="Province" formControlName="province">
+                    </div>
+                </div>
+                <button type="submit" [disabled]="isSubmitting" class="btn btn-block btn-success">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- <pre>{{form.value | json}}</pre> -->

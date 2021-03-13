@@ -1,0 +1,68 @@
+<div class="mt-4 py-4">
+
+    <h2>Draft Contract View</h2>
+    <div class="row">
+
+        <div class="col-md-4">
+            <h3>Property</h3>
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" style="height: 300px;" [src]="rentalAgreement?.offer?.property?.imageUrl">
+                <div class="card-body">
+                    <h3>{{rentalAgreement?.offer?.property.category}}&bull;<span>{{rentalAgreement?.offer?.property.status}}</span>
+                    </h3>
+                    <small class="card-text">{{rentalAgreement?.offer?.property.streetAddress}}</small> &bull;
+                    <small>{{rentalAgreement?.offer?.property.suburb}}</small> &bull;
+                    <small>{{rentalAgreement?.offer?.property.city}}</small> &bull;
+                    <small>{{rentalAgreement?.offer?.property.province}}</small>
+                    <hr>
+                    <p class="card-text">{{rentalAgreement?.offer?.property.description}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted"><strong>${{rentalAgreement?.offer?.property.price}}</strong> /
+                            month</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <h3>Offer Detail</h3><br>
+            <p>Tenant name: {{rentalAgreement?.offer?.user?.username}} </p><br>
+            <p>Tenant wallet address: {{rentalAgreement?.offer?.user?.walletAddress}}</p><br>
+            <p>Tenant Phone number: {{rentalAgreement?.offer?.user?.phoneNumber}}</p><br>
+            <p>Amount offered: {{rentalAgreement?.offer?.amount}}</p><br>
+            <p>Date of offer: {{rentalAgreement?.offer?.createdAt | date: 'medium'}}</p><br>
+            <p>Offer Status: {{rentalAgreement?.offer?.status}}</p><br>
+        </div>
+        <div class="col-md-4">
+            <h3>Rental Agreement Detail</h3><br>
+            <p>Amount: {{rentalAgreement?.amount}} </p><br>
+            <p>Period in months: {{rentalAgreement?.leasePeriod}}</p><br>
+            <p>Terms: {{rentalAgreement?.terms}}</p><br>
+            <p>Landlord Signature: {{rentalAgreement?.ownerAgreed}}</p><br>
+            <p>Tenant Signature: {{rentalAgreement?.tenantAgreed}}</p><br>
+            <p>Date of Contract Draft: {{rentalAgreement?.createdAt | date: 'medium'}}</p><br>
+            <p>Status: {{rentalAgreement?.status}}</p><br>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <button type="button" *ngIf="!isTenant"
+                (click)=" cancel(rentalAgreement?.id, rentalAgreement?.offer?.id)"
+                class="btn btn-block btn-warning">Cancel Contract
+            </button>
+
+            <button type="button" *ngIf="isTenant && rentalAgreement?.status=='Accepted'"
+                (click)=" cancel(rentalAgreement?.id, rentalAgreement?.offer?.id)"
+                class="btn btn-block btn-warning">Cancel Contract
+            </button>
+
+            <button type="button" *ngIf="isTenant && rentalAgreement?.status=='Pending'"
+                (click)="accept(rentalAgreement?.id)" class="btn btn-block btn-success">Accept Contract
+                Draft</button>
+
+            <button type="button" *ngIf="isTenant && rentalAgreement?.status=='Pending'"
+                (click)="reject(rentalAgreement?.id)" class="btn btn-block btn-danger">Reject Contract
+                Draft</button>
+        </div>
+    </div>
+</div>

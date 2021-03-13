@@ -1,0 +1,88 @@
+<div class="mt-4 py-4">
+
+    <h2>Accept Offer and Draft Contract</h2>
+    <div class="row">
+
+        <div class="col-md-6">
+            <h3>Property</h3>
+            <div class="card mb-4 box-shadow">
+                <img class="card-img-top" style="height: 300px;" [src]="offer?.property?.imageUrl">
+                <div class="card-body">
+                    <h3>{{offer?.property.category}}&bull;<span>{{offer?.property.status}}</span></h3>
+                    <small class="card-text">{{offer?.property.streetAddress}}</small> &bull;
+                    <small>{{offer?.property.suburb}}</small> &bull;
+                    <small>{{offer?.property.city}}</small> &bull;
+                    <small>{{offer?.property.province}}</small>
+                    <hr>
+                    <p class="card-text">{{offer?.property.description}}</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <small class="text-muted"><strong>${{offer?.property.price}}</strong> / month</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h3>Offer Detail</h3><br>
+            <p>Tenant name: {{offer?.user?.username}} </p><br>
+            <p>Tenant wallet address: {{offer?.user?.walletAddress}}</p><br>
+            <p>Tenant Phone number: {{offer?.user?.phoneNumber}}</p><br>
+            <p>Amount offered: {{offer?.amount}}</p><br>
+            <p>Date of offer: {{offer?.createdAt | date: 'medium'}}</p><br>
+            <p>Offer Status: {{offer?.status}}</p><br>
+        </div>
+    </div>
+    <div class="row" *ngIf="offer?.status == 'Pending'">
+        <div class="col-md-8 offset-md-2">
+
+            <form [formGroup]="form" (ngSubmit)="save()">
+
+                <input type="hidden" formControlName="offer" [ngModel]="offer">
+
+                <input type="hidden" formControlName="tenantWalletAddress" [ngModel]="offer?.user?.walletAddress">
+
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="">Number Of Months</label>
+                        <input type="number" class="form-control" placeholder="Number Of Months"
+                            formControlName="leasePeriod">
+                    </div>
+                    <div class="col form-group">
+                        <label for="">Monthly Amount Usd</label>
+                        <input type="number" class="form-control" placeholder="Monthly Amount Usd"
+                            formControlName="amount">
+                    </div>
+                </div>
+
+                <!-- <div class="row">
+                    <div class="col form-group">
+                        <label for="">Lease Deposit Usd</label>
+                        <input type="number" class="form-control" placeholder="Lease Deposit Usd"
+                            formControlName="leaseDepositUsd">
+                    </div>
+                    <div class="col form-group">
+                        <label for="">Lease Payment Window Seconds</label>
+                        <input type="number" class="form-control" placeholder="Lease Payment Window Seconds"
+                            formControlName="leasePaymentWindowSeconds">
+                    </div>
+                </div> -->
+                <!-- <div class="row">
+                    <div class="col form-group">
+                        <label for="">Deposit Payment Window Seconds</label>
+                        <input type="date" class="form-control" placeholder="Start Date"
+                            formControlName="leaseStart">
+                    </div>
+                </div> -->
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="">Terms</label>
+                        <textarea class="form-control" placeholder="Terms" formControlName="terms"></textarea>
+                    </div>
+                </div>
+                <button type="submit" [disabled]="isSubmitting" class="btn btn-block btn-success">Create Contract
+                    Draft</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- <pre>{{form.value | json}}</pre> -->

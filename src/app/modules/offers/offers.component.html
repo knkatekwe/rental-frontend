@@ -1,0 +1,35 @@
+<div class="mt-4">
+
+  <h4>My Property Offers</h4>
+
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>Date</th>
+        <th>Offered($)</th>
+        <th>Owner</th>
+        <th>Address</th>
+        <th>Desc</th>
+        <th>Actual($)</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let o of offers">
+        <th>{{o?.createdAt | date: 'medium'}}</th>
+        <td>{{o?.amount}}</td>
+        <td>{{o?.property?.user?.username}}</td>
+        <td>{{o?.property?.streetAddress}}</td>
+        <td>{{o?.property?.description}}</td>
+        <td>{{o?.property?.price}}</td>
+        <td>{{o?.status}}</td>
+        <td><a [routerLink]="['.']" (click)="cancel(o?.id)" *ngIf="o?.status == 'Pending' || isSubmitting">Cancel</a>
+          <a class="ml-2" [routerLink]="['/offer', o?.id, 'contract-draft']" *ngIf="o?.status == 'Accepted'">View Contract</a>
+        </td>
+      </tr>
+    </tbody>
+    <div *ngIf="offers.length == 0">No data yet</div>
+  </table>
+
+</div>

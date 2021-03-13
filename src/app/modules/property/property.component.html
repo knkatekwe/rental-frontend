@@ -1,0 +1,37 @@
+<div class="mt-4">
+
+    <h2>My Properties</h2>
+
+    <a [routerLink]="['add']" class="btn btn-success mb-1">New Property</a>
+
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th>Desc</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Address</th>
+            <th>Suburb</th>
+            <th>City</th>
+            <th>Province</th>
+            <th>Status</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of properties">
+            <th>{{p?.description}}</th>
+            <td>{{p?.category}}</td>
+            <td>{{p?.price}}</td>
+            <td>{{p?.streetAddress}}</td>
+            <th>{{p?.suburb}}</th>
+            <td>{{p?.city}}</td>
+            <td>{{p?.province}}</td>
+            <td>{{p?.status}}</td>
+            <td><a [routerLink]="['edit', p.id]">Edit</a></td>
+          </tr>
+        </tbody>
+      </table>
+      <div *ngIf="properties.length == 0">No data yet</div>
+
+</div>
