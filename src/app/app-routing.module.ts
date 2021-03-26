@@ -14,8 +14,10 @@ import { RentalAgreementResolver } from './modules/offers/rental-agreement-resol
 import { EditProfileComponent } from './modules/profile/edit-profile/edit-profile.component';
 import { ProfileComponent } from './modules/profile/profile.component';
 import { CreatePropertyComponent } from './modules/property/create-property/create-property.component';
+import { EditPropertyComponent } from './modules/property/edit-property/edit-property.component';
 import { RentalResolver } from './modules/property/property-resolver.service';
 import { PropertyComponent } from './modules/property/property.component';
+import { TransferComponent } from './modules/transfer/transfer.component';
 
 const routes: Routes = [
   { path: 'main', component: MainComponent },
@@ -48,6 +50,17 @@ const routes: Routes = [
     component: OfferContractViewComponent,
     resolve: { rentalAgreement: RentalAgreementResolver },
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'pay/contract/:id',
+    component: TransferComponent,
+    resolve: { rentalAgreement: RentalAgreementResolver },
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'properties/edit/:id',
+    component: EditPropertyComponent,
+    resolve: { property: RentalResolver },
   },
   {
     path: 'property/:id/offer',

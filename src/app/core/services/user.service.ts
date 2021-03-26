@@ -100,4 +100,13 @@ export class UserService {
   getUser(): Observable<any> {
     return this.http.get('http://localhost:8100/api/v1/auth/current');
   }
+
+  update(id, data){
+    return this.apiService.put(`/auth/user/${id}`, data).pipe(
+      map((registrationData) => {
+        console.log(registrationData);
+        return registrationData;
+      })
+    );
+  }
 }

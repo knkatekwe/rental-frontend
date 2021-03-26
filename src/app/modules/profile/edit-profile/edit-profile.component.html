@@ -1,74 +1,60 @@
-<!-- <form [formGroup]="form" novalidate>
+<div class="mt-4">
 
-  <input type="hidden" formControlName="id" [(ngModel)]="currentUser.id"/>
+    <h2>Edit Profile</h2>
 
-  <div class="form-group row">
-        <label class="col-lg-3 col-form-label form-control-label">Name</label>
-        <div class="col-lg-9">
-            <input class="form-control"
-                   type="text"
-                   formControlName="username"
-                   [(ngModel)]="currentUser.username"
-                   placeholder="Name">
+    <div class="row">
+        <div class="offset-md-2 col-md-8">
+            <form [formGroup]="form" (ngSubmit)="update(form.value)">
+
+                <input type="hidden" formControlName="id" [(ngModel)]="currentUser.id" />
+
+                <div class="form-group row">
+
+                    <input type="hidden" formControlName="id" [ngModel]="currentUser?.id">
+
+                    <div class="col-lg-12">
+                        <label class="">Username</label>
+                        <input class="form-control" type="text" formControlName="username"
+                            [ngModel]="currentUser?.username" placeholder="Name">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-lg-12">
+                        <label class="">E-mail</label>
+                        <input class="form-control" type="email" formControlName="email" [ngModel]="currentUser?.email"
+                            placeholder="email@gmail.com">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-lg-12">
+                        <label class="">Phone Number</label>
+                        <input class="form-control" type="number" formControlName="phoneNumber"
+                            [ngModel]="currentUser.phoneNumber" placeholder="Phone Number">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-lg-12">
+                        <label class="">Wallet Address</label>
+                        <input class="form-control" type="text" formControlName="walletAddress"
+                            [ngModel]="currentUser?.walletAddress" placeholder="Wallet Address">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-lg-12">
+                        <label class="">Password (must not be blank)</label>
+                        <input class="form-control" type="password" formControlName="password"
+                            placeholder="Enter Password">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-block btn-success" [disabled]="isSubmitting || !form.valid">Update
+                    Profile</button>
+            </form>
         </div>
     </div>
-    <div class="form-group row">
-      <label class="col-lg-3 col-form-label form-control-label">LastName</label>
-      <div class="col-lg-9">
-          <input class="form-control"
-                 type="text"
-                 formControlName="lastName"
-                 [(ngModel)]="currentUser.lastName"
-                 placeholder="Last Name">
-      </div>
-  </div>
-    <div class="form-group row">
-        <label class="col-lg-3 col-form-label form-control-label">E-mail</label>
-        <div class="col-lg-9">
-            <input class="form-control"
-                  type="email"
-                  formControlName="email"
-                  [(ngModel)]="currentUser.email"
-                  placeholder="email@gmail.com">
-        </div>
-    </div>
 
-    <div class="form-group row">
-        <label class="col-lg-3 col-form-label form-control-label">Address</label>
-        <div class="col-lg-9">
-            <input class="form-control"
-                   type="text"
-                   formControlName="physical_address"
-                   [(ngModel)]="currentUser.physical_address"
-                   placeholder="Address">
-        </div>
-    </div>
-
-    <div class="form-group row">
-      <label class="col-lg-3 col-form-label form-control-label">Phone Number</label>
-      <div class="col-lg-9">
-          <input class="form-control"
-                 type="number"
-                 formControlName="phone_number"
-                 [(ngModel)]="currentUser.phone_number"
-                 placeholder="Phone Number">
-      </div>
-  </div>
-
-    <div class="form-group row">
-        <label class="col-lg-3 col-form-label form-control-label">About</label>
-        <div class="col-lg-9">
-            <input class="form-control"
-                   type="text"
-                   formControlName="about"
-                   [(ngModel)]="currentUser.about"
-                   placeholder="janeuser">
-        </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-lg-3 col-form-label form-control-label"></label>
-        <div class="col-lg-9">
-            <input type="button" class="btn btn-primary" value="Save Changes" (click)="save(currentUser.id)">
-        </div>
-    </div>
-</form> -->
+</div>

@@ -1,0 +1,36 @@
+<div class="mt-4">
+
+
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>Transfer</h2>
+            <h3><b>Wallet Address:</b> {{user?.address}}</h3>
+            <h3><b>Balance:</b> {{user?.balance | number}} ETH</h3>
+            <hr>
+            <form [formGroup]="form" (ngSubmit)="submitForm()">
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="">Amount</label>
+                        <input type="text" class="form-control" placeholder="Amount" formControlName="amount">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col form-group">
+                        <label for="">Transfer Address</label>
+                        <input type="text" class="form-control" placeholder="Transfer Address"
+                            formControlName="transferAddress">
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    <div class="col form-group">
+                        <label for="">Remarks</label>
+                        <input type="text" class="form-control" placeholder="Remarks" formControlName="remarks">
+                    </div>
+                </div> -->
+                <button type="submit" [disabled]="isSubmitting" class="btn btn-block btn-success">Send Ether</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- <pre>{{form.value | json}}</pre> -->

@@ -46,10 +46,13 @@
     </div>
     <div class="row">
         <div class="col-md-8 offset-md-2">
-            <button type="button" *ngIf="!isTenant"
-                (click)=" cancel(rentalAgreement?.id, rentalAgreement?.offer?.id)"
+            <button type="button" *ngIf="!isTenant" (click)=" cancel(rentalAgreement?.id, rentalAgreement?.offer?.id)"
                 class="btn btn-block btn-warning">Cancel Contract
             </button>
+
+            <a [routerLink]="['/pay/contract', rentalAgreement?.id]" *ngIf="isTenant && rentalAgreement?.status=='Accepted'"
+                class="btn btn-block btn-info">Pay Contract Fee
+            </a>
 
             <button type="button" *ngIf="isTenant && rentalAgreement?.status=='Accepted'"
                 (click)=" cancel(rentalAgreement?.id, rentalAgreement?.offer?.id)"
