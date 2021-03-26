@@ -4,7 +4,8 @@ const Web3 = require('web3');
 const contract = require('@truffle/contract');
 declare let require: any;
 declare let window: any;
-const tokenAbi = require('../../smart-contract/Transfer.json');
+const transferAbi = require('../../../../build/contracts/Transfer.json');
+const leaseAbi = require('../../../../build/contracts/leaseGenerator.json');
 
 @Injectable({
   providedIn: 'root',
@@ -107,10 +108,10 @@ export class TransferService {
         value.amount
     );
     return new Promise((resolve, reject) => {
-      console.log('transfer.service :: transferEther :: tokenAbi');
-      console.log(tokenAbi);
+      console.log('transfer.service :: transferEther :: transferAbi');
+      console.log(transferAbi);
 
-      const transferContract = contract(tokenAbi);
+      const transferContract = contract(transferAbi);
       transferContract.setProvider(that.web3);
       console.log('transfer.service :: transferEther :: transferContract');
 
@@ -149,10 +150,10 @@ export class TransferService {
         value.amount
     );
     return new Promise((resolve, reject) => {
-      console.log('transfer.service :: transferEther :: tokenAbi');
-      console.log(tokenAbi);
+      console.log('transfer.service :: transferEther :: transferAbi');
+      console.log(transferAbi);
 
-      const transferContract = contract(tokenAbi);
+      const transferContract = contract(transferAbi);
       transferContract.setProvider(that.web3);
       console.log('transfer.service :: transferEther :: transferContract');
 
