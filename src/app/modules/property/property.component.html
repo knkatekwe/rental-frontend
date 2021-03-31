@@ -19,7 +19,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let p of properties">
+          <tr *ngFor="let p of properties | paginate: { itemsPerPage: 10, currentPage: p }">
             <th>{{p?.description}}</th>
             <td>{{p?.category}}</td>
             <td>{{p?.price}}</td>
@@ -33,5 +33,7 @@
         </tbody>
       </table>
       <div *ngIf="properties?.length == 0">No data yet</div>
+      
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 </div>

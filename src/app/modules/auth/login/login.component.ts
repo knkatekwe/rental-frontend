@@ -12,7 +12,6 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   loading = false;
   submitted = false;
-  // errors: Errors = {errors: {}};
   isSubmitting = false;
 
   constructor(
@@ -20,17 +19,13 @@ export class LoginComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private userService: UserService
-  ) // private alertService: AlertService
-  {}
+  ) {}
 
   ngOnInit() {
     this.form = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
     });
-
-    // get return url from route parameters or default to '/'
-    // this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   // convenience getter for easy access to form fields
@@ -39,9 +34,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    //this.isSubmitting = true;
-    //this.errors = {errors: {}};
-
     const credentials = this.form.value;
     console.log(credentials);
     this.userService.login(credentials).subscribe(
@@ -50,6 +42,7 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/');
       },
       (err) => {
+        alert('Oops!, incorrect user details. Check your username or password')
         console.log(err);
         this.isSubmitting = false;
       }

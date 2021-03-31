@@ -5,6 +5,7 @@ import { Offer } from 'src/app/core/models/offer';
 import { RentalAgreement } from 'src/app/core/models/rental-agreement';
 import { User } from 'src/app/core/models/user';
 import { RentalAgreementService } from 'src/app/core/services/rental-agreement.service';
+import { TransferService } from 'src/app/core/services/transfer.service';
 import { UserService } from 'src/app/core/services/user.service';
 
 @Component({
@@ -22,6 +23,7 @@ export class IncomingOffersAcceptComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private rentalAgreementService: RentalAgreementService,
+    private transferService: TransferService,
     private fb: FormBuilder,
     private userService: UserService,
     private router: Router
@@ -53,6 +55,15 @@ export class IncomingOffersAcceptComponent implements OnInit {
     });
   }
 
+  createLease() {
+    this.transferService
+      .createLease(this.form.value)
+      .then(function () {})
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   save() {
     this.isSubmitting = true;
     this.rentalAgreementService.saveRentalAgreement(this.form.value).subscribe(
@@ -60,6 +71,7 @@ export class IncomingOffersAcceptComponent implements OnInit {
         alert('Rental Agreement draft created successfully :)');
         this.router.navigateByUrl('/incoming/offers')
         this.isSubmitting = false;
+        this.createLease()
       },
       (err) => {
         alert('Failed to create rental agreement draft :(');

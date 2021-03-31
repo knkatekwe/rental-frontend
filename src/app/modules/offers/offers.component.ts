@@ -12,6 +12,8 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class OffersComponent implements OnInit {
 
+  p: any
+
   isSubmitting: boolean
   currentUser: User;
 

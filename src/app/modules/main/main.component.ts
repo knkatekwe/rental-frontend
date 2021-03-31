@@ -9,7 +9,8 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['./main.component.css'],
 })
 export class MainComponent implements OnInit {
-  form: FormGroup
+  p: any;
+  form: FormGroup;
   rentals: any;
   currentUser: any;
   isLoggedIn: boolean;
@@ -43,7 +44,7 @@ export class MainComponent implements OnInit {
     });
   }
 
-  initForm(){
+  initForm() {
     this.form = this.fb.group({
       rental: ['', [Validators.required]],
       status: ['', [Validators.required]],

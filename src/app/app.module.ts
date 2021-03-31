@@ -35,9 +35,10 @@ import { OfferResolver } from './modules/offers/offer-resolver.service';
 import { RentalAgreementService } from './core/services/rental-agreement.service';
 import { OfferContractViewComponent } from './modules/offers/offer-contract-view/offer-contract-view.component';
 import { RentalAgreementResolver } from './modules/offers/rental-agreement-resolver.service';
-// import { TransferService } from './core/services/transfer.service';
 import { TransferComponent } from './modules/transfer/transfer.component';
 import { TransferService } from './core/services/transfer.service';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { TransferService } from './core/services/transfer.service';
     HttpClientModule,
     RouterModule,
     BrowserAnimationsModule,
+    NgxPaginationModule,
     ///////////////////
   ],
   providers: [

@@ -16,7 +16,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let o of offers">
+      <tr *ngFor="let o of offers | paginate: { itemsPerPage: 10, currentPage: p }">
         <th>{{o?.createdAt | date: 'medium'}}</th>
         <td>{{o?.amount}}</td>
         <td>{{o?.property?.user?.username}}</td>
@@ -31,5 +31,7 @@
     </tbody>
     <div *ngIf="offers?.length == 0">No data yet</div>
   </table>
+
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 </div>

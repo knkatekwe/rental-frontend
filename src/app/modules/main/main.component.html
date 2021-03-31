@@ -53,7 +53,7 @@
   <div class="">
 
     <div class="row">
-      <div *ngFor="let rental of rentals; let i = index" class="col-md-4">
+      <div *ngFor="let rental of rentals  | paginate: { itemsPerPage: 10, currentPage: p }; let i = index" class="col-md-4">
         <div class="card mb-4 box-shadow">
           <img class="card-img-top" style="height: 200px;" [src]="rental.imageUrl" alt="Card image cap">
           <div class="card-body">
@@ -72,6 +72,8 @@
           </div>
         </div>
       </div>
+      
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
     </div>
   </div>

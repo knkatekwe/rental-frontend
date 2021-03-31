@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "node patch.js"
+    "postinstall": "node patch.js",
+    "bridge": "./node_modules/.bin/ethereum-bridge -a 9 -H 127.0.0.1 -p 7545 --dev",
+    "chain": "ganache-cli -p 8545 --defaultBalanceEther 10000 --db ./ganache/"
   },
   "private": true,
   "dependencies": {
@@ -26,7 +28,9 @@
     "@ng-bootstrap/ng-bootstrap": "^9.0.2",
     "@truffle/contract": "^4.3.11",
     "bootstrap": "^4.5.0",
+    "ethereum-bridge": "^0.6.2",
     "jquery": "^3.6.0",
+    "ngx-pagination": "^5.0.0",
     "popper.js": "^1.16.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",

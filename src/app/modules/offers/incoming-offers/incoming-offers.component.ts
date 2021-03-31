@@ -11,6 +11,9 @@ import { UserService } from 'src/app/core/services/user.service';
   styleUrls: ['./incoming-offers.component.css'],
 })
 export class IncomingOffersComponent implements OnInit {
+
+  p:any;
+  
   isSubmitting: boolean;
   currentUser: User;
 

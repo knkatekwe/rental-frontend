@@ -89,7 +89,7 @@ contract LeaseGenerator is usingProvable {
             provable_setCustomGasPrice(100000000000);
             //OAR = OracleAddrResolverI(0x6f485C8BF6fc43eA212E93BBF8ce046C7f1cb475);
             //OAR = OraclizeAddrResolverI(0x6f485C8BF6fc43eA212E93BBF8ce046C7f1cb475);
-            OAR = OracleAddrResolverI(0xD08FB39f871BF7d21e3189BF1C3802A7C150554d);
+            OAR = OracleAddrResolverI(0x6f485C8BF6fc43eA212E93BBF8ce046C7f1cb475);
     }
 
     function fetchUsdRate() internal {

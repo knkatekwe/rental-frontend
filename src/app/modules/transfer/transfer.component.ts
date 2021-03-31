@@ -11,7 +11,6 @@ import { TransferService } from 'src/app/core/services/transfer.service';
   selector: 'app-transfer',
   templateUrl: './transfer.component.html',
   styleUrls: ['./transfer.component.css'],
-  //providers: [TransferService],
 })
 export class TransferComponent implements OnInit {
   form: FormGroup;
@@ -76,10 +75,19 @@ export class TransferComponent implements OnInit {
         ])
       ),
       remarks: new FormControl(
-        this.user.remarks,
+        this.user.remarks
         // Validators.compose([Validators.required])
       ),
     });
+  }
+
+  getContract() {
+    this.transferService
+      .getContractBalance()
+      .then(function () {})
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   submitForm() {

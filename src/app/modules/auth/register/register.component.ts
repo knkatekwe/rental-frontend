@@ -6,52 +6,49 @@ import { UserService } from 'src/app/core/services/user.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent implements OnInit {
-
   form: FormGroup;
-    loading = false;
-    submitted = false;
-    isSubmitting = false;
-    errors: Error;
+  loading = false;
+  submitted = false;
+  isSubmitting = false;
+  errors: Error;
 
-    constructor(
-        private formBuilder: FormBuilder,
-        private route: ActivatedRoute,
-        private router: Router,
-        private userService: UserService,
-        // private alertService: AlertService
-    ) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
+    private router: Router,
+    private userService: UserService
+  ) {}
 
-    ngOnInit() {
-        this.form = this.formBuilder.group({
-            username: ['', Validators.required],
-            email: ['', Validators.required],
-            phoneNumber: ['', Validators.required],
-            walletAddress: ['', Validators.required],
-            password: ['', [Validators.required, Validators.minLength(6)]]
-        });
-    }
+  ngOnInit() {
+    this.form = this.formBuilder.group({
+      username: ['', Validators.required],
+      email: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+      walletAddress: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+    });
+  }
 
-    // convenience getter for easy access to form fields
-    get f() { return this.form.controls; }
+  get f() {
+    return this.form.controls;
+  }
 
-    onSubmit() {
-      //this.isSubmitting = true;
-      //this.errors = {errors: {}};
-
-      const registrationData = this.form.value;
-      console.log(registrationData)
-      this.userService
-      .register(registrationData)
-      .subscribe(
-        data => this.router.navigateByUrl('/login'),
-        err => {
+  onSubmit() {
+    const registrationData = this.form.value;
+    console.log(registrationData);
+    if(this.form.valid){
+      this.userService.register(registrationData).subscribe(
+        (data) => this.router.navigateByUrl('/login'),
+        (err) => {
           this.errors = err;
           this.isSubmitting = false;
         }
       );
+    }else{
+      alert('Please fill in all the required details')
     }
-
+  }
 }

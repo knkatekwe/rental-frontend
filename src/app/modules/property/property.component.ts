@@ -12,6 +12,8 @@ import { UserService } from 'src/app/core/services/user.service';
 })
 export class PropertyComponent implements OnInit {
 
+  p:any;
+
   currentUser: User;
 
   properties: Property[]
