@@ -23,7 +23,7 @@ export class RentalAgreementService {
 		return this.http.get(MAIN_URL + `/rental-agreements/${id}/incoming`);
 	}
 
-	getRentalAgreement(id: number): Observable<any> {
+	getRentalAgreement(id): Observable<any> {
 		return this.http.get(MAIN_URL + `/rental-agreements/${id}`);
 	}
 

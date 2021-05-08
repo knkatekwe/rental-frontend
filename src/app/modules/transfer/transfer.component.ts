@@ -5,6 +5,9 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { RentalAgreement } from 'src/app/core/models/rental-agreement';
+import { RentalAgreementService } from 'src/app/core/services/rental-agreement.service';
 import { TransferService } from 'src/app/core/services/transfer.service';
 
 @Component({
@@ -17,6 +20,9 @@ export class TransferComponent implements OnInit {
   formSubmitted = false;
   user: any;
   isSubmitting: boolean;
+  id: any;
+
+  rentalAgreement: RentalAgreement;
 
   //validation messages
   accountValidationMessages = {
@@ -39,8 +45,10 @@ export class TransferComponent implements OnInit {
   };
 
   constructor(
+    private route: ActivatedRoute,
     private fb: FormBuilder,
-    private transferService: TransferService
+    private transferService: TransferService,
+    private rentalAgreementService: RentalAgreementService,
   ) {}
 
   ngOnInit() {
@@ -55,6 +63,18 @@ export class TransferComponent implements OnInit {
     };
     this.getAccountAndBalance();
     this.createForms();
+
+    this.id = this.route.snapshot.paramMap.get('id');
+
+    this.rentalAgreementService.getRentalAgreement(this.id).subscribe((res)=>{
+      this.rentalAgreement = res
+    })
+
+    // this.route.data.subscribe((data: { rentalAgreement: RentalAgreement }) => {
+    //   this.rentalAgreement = data.rentalAgreement;
+    //   console.log(this.rentalAgreement);
+    // });
+
   }
 
   createForms() {

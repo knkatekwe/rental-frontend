@@ -1,11 +1,14 @@
 <div class="mt-4">
-
-
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <h2>Transfer</h2>
             <h3><b>Wallet Address:</b> {{user?.address}}</h3>
             <h3><b>Balance:</b> {{user?.balance | number}} ETH</h3>
+            <hr>
+            <h3><b>Monthly Rental (USD):</b> {{rentalAgreement?.amount | currency}}</h3>
+            <h3><b>No of months:</b> {{rentalAgreement?.leasePeriod}} Month(s)</h3>
+            <h3><b>Start date:</b> {{rentalAgreement?.createdAt | date}}</h3>
+            <h3><b>Owner address:</b> {{rentalAgreement?.offer?.property?.user?.walletAddress}}</h3>
             <hr>
             <form [formGroup]="form" (ngSubmit)="submitForm()">
                 <div class="row">
@@ -21,12 +24,6 @@
                             formControlName="transferAddress">
                     </div>
                 </div>
-                <!-- <div class="row">
-                    <div class="col form-group">
-                        <label for="">Remarks</label>
-                        <input type="text" class="form-control" placeholder="Remarks" formControlName="remarks">
-                    </div>
-                </div> -->
                 <button type="submit" [disabled]="isSubmitting" class="btn btn-block btn-success">Send Ether</button>
             </form>
         </div>
@@ -35,4 +32,4 @@
 
 <!-- <button type="button" class="btn btn-block btn-info mt-4" (click)="getContract()">GET CONTRACT BALANCE</button> -->
 
-<!-- <pre>{{form.value | json}}</pre> -->
+<!-- <pre>{{rentalAgreement | json}}</pre> -->
